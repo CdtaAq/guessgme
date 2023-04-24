@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Guessing Game</title>
+</head>
+<body>
+	<h1>Guessing Game</h1>
+	<p id="instructions">Guess a number between 1 and 20.</p>
+	<input type="number" id="guess" placeholder="Enter your guess...">
+	<button onclick="do_guess()">Submit</button>
+	<p id="message"></p>
+
+	<script>
+		let max_num = 0;
+		while (max_num <= 0) {
+			max_num = Math.round(parseFloat(prompt("What is the maximum number?")));
+		}
+		document.getElementById("instructions").textContent = "Guess a number between 1 and " + max_num + ".";
+
+		let num = Math.floor(Math.random() * max_num) + 1;
+
+		function do_guess() {
+			let guess = Number(document.getElementById("guess").value);
+
+			let message = document.getElementById("message");
+
+			if(guess == num) {
+				message.innerHTML = "You got it!";
+			}
+			else if (guess > num) {
+				message.innerHTML = "No, try a lower number.";
+			}
+			else {
+				message.innerHTML = "No, try a higher number.";
+			}
+		}
+	</script>
+</body>
+</html>
+
